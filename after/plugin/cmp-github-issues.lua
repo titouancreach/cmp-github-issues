@@ -1,1 +1,1 @@
-require('cmp').register_source('github_issues', require('cmp_github_issues').new())
+require('cmp').register_source('github_issues', require('cmp-github-issues').new())
