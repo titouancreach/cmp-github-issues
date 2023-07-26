@@ -1,3 +1,5 @@
+-- code comes from: https://github.com/wincent/wincent/blob/2d926177773f/aspects/nvim/files/.config/nvim/lua/wincent/cmp/handles.lua
+
 local issues_list = vim.fn.json_decode(vim.fn.system("gh issue list --json number,title,body", true))
 
 local source = {}
@@ -11,7 +13,6 @@ source.get_trigger_characters = function()
 end
 
 source.get_keyword_pattern = function()
-    -- Add dot to existing keyword characters (\k).
     return [[\%(\k\|\.\)\+]]
 end
 
@@ -59,20 +60,3 @@ source.complete = function(self, request, callback)
 end
 
 return source;
-
--- cmp.register_source('handles', source.new())
-
--- cmp.setup.filetype('NeogitCommitMessage', {
---     sources = cmp.config.sources({
---         { name = 'luasnip' },
---         { name = 'buffer' },
---         { name = 'calc' },
---         { name = 'emoji' },
---         { name = 'path' },
-
---         { name = 'git' },
-
---         -- My custom sources.
---         { name = 'handles' },
---     }),
--- })
