@@ -1,17 +1,8 @@
-local registered = false
+local M = {}
 
-if registered then
-    return
+M.setup = function()
+    local source = require('cmp-github-issues');
+    require('cmp').register_source('github_issues', source.new())
 end
 
-registered = true
-
-local has_cmp, cmp = pcall(require, 'cmp')
-
-if not has_cmp then
-    return
-end
-
-local source = require('cmp-github-issues');
-
-require('cmp').register_source('github_issues', source.new())
+return M
